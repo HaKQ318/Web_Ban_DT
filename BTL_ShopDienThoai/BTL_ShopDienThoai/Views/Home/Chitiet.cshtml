@@ -1,0 +1,121 @@
+﻿@model BTL_ShopDienThoai.Models.DienThoai
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+<hr size="4px" width="82%" color="coral" style="margin-bottom: 20px; margin-left: 9%;">
+<div class="productnametop">
+    <p>Tên Điện Thoại : @Html.DisplayFor(model => model.TenDT)</p>
+</div>
+<hr size="4px" width="82%" color="coral" style="margin-bottom: 20px; margin-left: 9%;">
+<section id="main">
+    <div class="div_slide">
+        <div class="img_product">
+            <div>
+                <img src="@Url.Content("~/wwwroot/ANHDIENTHOAI/" +@Model.Anh)" alt="Anh" style="width:100%">
+            </div>
+        </div>
+    </div>
+
+    <div class="produc_shop_right">
+        <div class="address">
+            <p>Mua hàng từ:</p>
+            <select name="Địa điểm" id="addess_filter">
+                <option value="#">Phú Thọ</option>
+                <option value="#">Hà Nội</option>
+                <option value="#">TP.Hồ Chí Minh</option>
+            </select>
+        </div>
+        <div class="price">
+            <p><span style="font-size: 13px; font-weight: 800; font-family: 'Open Sans', sans-serif;">Giá bán : </span>@Html.DisplayFor(model => model.Gia)&nbsp;₫</p>
+            @*<p>Gía niêm yết: <span style="text-decoration:line-through ; color: gray;">10.990.000₫</span></p>*@
+            <button type="button" onclick="alert('Liên hệ hotline để được tư vấn về chương trình trả góp!')">
+                <a href="#">Trả góp 0%</a>
+            </button>
+        </div>
+        
+        <div class="qty-label">
+            <p><span style="font-size: 13px; font-weight: 800; font-family: 'Open Sans', sans-serif;">Số lượng : </span>@Html.DisplayFor(model => model.SoLuong)</p>
+        </div>
+        
+        <div class="option">
+            <p><span style="font-size: 13px; font-weight: 800; font-family: 'Open Sans', sans-serif;">Lựa chọn phiên bản</span></p>
+            <div class="bao_box_option">
+                <div class="box_option" id="mau" onclick="doimau()">
+                    <p><span style="font-weight: 500;">Bản thường</span></p>
+                    <H3>10.490.000 ₫</H3>
+                </div>
+                <div class="box_option" id="mau" onclick="doimau()">
+                    <p><span style="font-weight: 500;">Bản mùa xuân</span></p>
+                    <H3>10.490.000 ₫</H3>
+                </div>
+                <div class="box_option" id="mau" onclick="doimau()">
+                    <p><span style="font-weight: 500;">Bản mùa hè</span></p>
+                    <H3>10.490.000 ₫</H3>
+                </div>
+            </div>
+            <p><span style="font-size: 13px; font-weight: 800; font-family: 'Open Sans', sans-serif;">Lựa chọn màu sắc</span></p>
+            <div class="bao_option_color">
+                <div class="option_color" id="mau" onclick="doimau()">
+                    <input type="checkbox" id="op1" name="op1">
+                    <p>Xanh&nbsp;</p>
+                </div>
+                <div class="option_color" id="mau" onclick="doimau()">
+                    <input type="checkbox" id="op2" name="op2">
+                    <p>Tím&nbsp;</p>
+                </div>
+                <div class="option_color" id="mau" onclick="doimau()">
+                    <input type="checkbox" id="op1" name="op1">
+                    <p>Trắng&nbsp;</p>
+                </div>
+                <div class="option_color" id="mau" onclick="doimau()">
+                    <input type="checkbox" id="op1" name="op1">
+                    <p>Đen&nbsp;</p>
+                </div>
+            </div>
+        </div>
+        <div class="khuyenmai">
+            <div class="headkhuyenmai">
+                <div class="texthead">
+                    <p><i class="fas fa-gifts" fa-lm></i> Khuyến mãi:</p>
+                </div>
+            </div>
+            <div class="mainkhuyenmai">
+                <h4>Khuyến mãi hãng</h4>
+                <li><a href="#">Gói đặc quyền ưu đãi cho chủ sở hữu Galaxy Fold</a></li>
+                <li><a href="#">Tặng tai nghe không dây Galaxy Buds Pro</a></li>
+            </div>
+        </div>
+        <div class="btn_mua">
+
+            <div class="btn_tragop">
+                <button id="tragop0" type="button" onclick="alert('Liên hệ hotline để được tư vấn về chương trình trả góp!')">
+                    Trả góp 0%
+                    <span style="font-size: 13px;font-weight: 100;"><p>(Xét duyệt qua điện thoại)</p></span>
+                </button>
+                <button id="tragopquathe" type="button" onclick="alert('Liên hệ hotline để được tư vấn về chương trình trả góp!')">
+                    Trả góp qua thẻ
+                    <span style="font-size: 13px;font-weight: 100;"><p>(Visa, Master, JCB)</p></span>
+                </button>
+            </div>
+            <div class="note_mua">
+                <a href="#">Trả góp 0% với thẻ tín dụng tại cửa hàng - Xem chi tiết</a>
+                <p>Liên hệ ngay: <span style="font-weight: 600;">0372082758</span> | <a href="#">Chat với tư vấn viên</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<hr size="4px" width="82%" color="coral" style="margin-bottom: 20px; margin-left: 9%;">
+<section id="mota_product" style="height:auto">
+    <div class="mota_trai" style="height:500px;">
+        <div class="write_product">
+            <header>Mô tả chi tiết - @Html.DisplayFor(model => model.TenDT) - Cải tiến về mọi mặt, giá không đổi</header>
+            <br />
+            <p>@Html.DisplayFor(model => model.Mota)</p>
+            <br>
+            <img src="@Url.Content("~/wwwroot/ANHDIENTHOAI/" +@Model.Anh)" alt="" style="width: 30%; margin-left: 35%;">
+        </div>
+    </div>
+
+</section>
+

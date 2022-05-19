@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/wwwroot/style.css">
+    <link rel="stylesheet" href="~/wwwroot/reponsive.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.3-web/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="~/wwwroot/js/jquery-3.6.0.min.js"></script>
+    <script src="~/wwwroot/js/js_add_to_cart.js"></script>
+    <script src="~/wwwroot/js/js_doi_mau.js"></script>
+    <link rel="stylesheet" href="~/wwwroot/css/css_ss_zfold2.css">
+    <title>Trang chủ</title>
+
+</head>
+<body>
+    <section>
+        <div class="header">
+            <div id="top1">
+                <a href="#"><img src="~/wwwroot/ANHDIENTHOAI/logo_dai2.png" style="width: 90%; height: 250%;"></a>
+            </div>
+            <div class="seachbox">
+                <input type="text" placeholder="Tìm Kiếm Sản Phẩm ">
+                <div class="seach-btn">
+                    <a href="#"><i class="fa fa-search fa-2x" aria-hidden="true" style="color: white;"></i></a>
+                </div>
+            </div>
+            <div id="phone">
+                <img src="~/wwwroot/ANHDIENTHOAI/goidien.PNG" alt="">
+                <p>Gọi đặt hàng:</p>
+                <h2>0372082758</h2>
+            </div>
+            <div id="diachi">
+
+                <a href="#">
+                    <img src="~/wwwroot/ANHDIENTHOAI/iconmaps.PNG" alt="icon_map">
+                    <p>Tìm cửa hàng</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="menu">
+        @{ 
+            Html.RenderAction("_Nav", "Home");
+        }
+    </section>
+    <section>
+        <div class="via">
+            <div class="mySlides">
+                <img src="~/wwwroot/ANHDIENTHOAI/Bannerxiaomi.png" style="width:100%">
+            </div>
+
+           @* <div class="mySlides">
+                <img src="~/wwwroot/ANHDIENTHOAI/banner-iphone-12-mini-1200-140.gif" style="width:100%">
+            </div>*@
+        </div>
+        <script src="js/jsslide_via.js"></script>
+    </section>
+    @RenderBody()
+
+    <section id="thongtin">
+        <div class="header-thongtin">
+            <div class="nav__thongtin">
+                <img src="~/wwwroot/ANHDIENTHOAI/logo_full.png">
+                <div class="content_thongtin">
+                    <p>Hệ thống điện thoại uy tín toàn quốc</p>
+                    <ul>
+                        <li>Hotline 037.208.2758</li>
+                        <li>Cơ sở Hà Nội: 295 Khâm Thiên - Đống Đa - Hà Nội</li>
+                        <li>Cơ sở Phú Thọ:  Tp.Việt Trì - Phú Thọ</li>
+                        <li>Cơ sở TP.Hồ Chí Minh: 100 Thạnh Mỹ Lợi - Quận 2 - TP.Hồ Chí Minh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="header-hotro">
+            <div class="nav__hotro">
+                <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                <ul>
+                    <li><a href="#">Cách sạc pin điện thoại kéo dài tuổi thọ pin</a></li>
+                    <li><a href="#">Quy trình bảo hành điện thoại</a></li>
+                    <li><a href="#">Các phần mềm diện thoại hữu ích nên có</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="header-dichvu">
+            <div class="nav__dichvu">
+                <h3>DỊCH VỤ KHÁCH HÀNG</h3>
+                <ul>
+                    <li><a href="#">Giới thiệu về Shop điện thoại</a></li>
+                    <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                    <li><a href="#">Chính sách đổi trả và bảo hành</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Liên hệ Shop</a></li>
+                    <a href="#">
+                    <li>Hệ thống cửa hàng</li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="header-thanhtoan">
+            <div class="nav__thanhtoan">
+                <h3>THANH TOÁN</h3>
+                <ul>
+                    <img src="~/wwwroot/ANHDIENTHOAI/Visa_Inc._logo.svg.png" style="width: 20%;">
+                    <img src="~/wwwroot/ANHDIENTHOAI/visa.PNG" style="width: 50%;">
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

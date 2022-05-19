@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BTL_ShopDienThoai.Models.Hang>
+<ul>
+    <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+    <li>
+        <a href="#"><b>Điện Thoại</b></a>
+        <ul class="submenu">
+            <li>
+                <a href="#"><b>Hãng Sản Xuất</b></a>
+                <ul class="submenu1">
+@*                    <li>@Html.ActionLink("Samsung", "Samsung", "Home")</li>
+                    <li>@Html.ActionLink("Apple", "Apple", "Home")</li>
+                    <li>@Html.ActionLink("Sony", "Sony", "Home")</li>
+                    <li>@Html.ActionLink("Xiaomi", "Xiaomi", "Home")</li>
+                    <li>@Html.ActionLink("Nokia", "Nokia", "Home")</li>*@
+                    @foreach(var item in Model)
+            {
+                <li><a href="@Url.Action("Index","Home",new {id=item.MaHang.Trim() })">
+                    @Html.DisplayFor(modelItem=>item.TenHang)</a></li>
+            }
+                </ul>
+            </li>
+        </ul>
+    </li>
+   @* <li>@Html.ActionLink("Đăng Nhập", "Login", "Home")</li>*@
+</ul>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BTL_ShopDienThoai.Models.DienThoai>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    Html.RenderAction("_Aside", "Home");
+}
+<section id="san-pham-chinh" style="height:auto">
+    <div class="tieu-de">
+        <p>DANH SÁCH ĐIỆN THOẠI</p>
+    </div>
+    <hr size="5px" width="82%" color="coral" style="margin-bottom: 20px; margin-left: 9%;">
+    <div class="row" style="height:auto">
+        @foreach (var item in Model)
+        {
+            <div class="col-3 col-s-6 box">
+                <div class="contentsp">
+                    <div class="bao-sp-chinh">
+                        <div class="box-name">  
+                            <div>
+                                @{
+                                    string ImagePath = "~/wwwroot/ANHDIENTHOAI/" + item.Anh;
+                                }
+                                <img src="@Url.Content(ImagePath)" alt="" >
+                            </div>
+                            <div class="box-name"> <a href="~/Home/Chitiet/?maDT=@item.MaDT">@item.TenDT</a></div>
+                            <div style="color: red; margin-top: 5px; margin-left: 5px; font-size: 17px;">
+                                @Html.DisplayFor(modelItem => item.Gia) VND
+                                @*<span style="text-decoration:line-through ; color: gray; font-size: 13px;">45.990.000 ₫</span>*@
+                            </div>
+                            @*<div class="danh-gia">
+                                <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                                <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                                <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                                <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                                <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                                <span style="font-size: 12px;">10 đánh giá</span>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+   
+</section>

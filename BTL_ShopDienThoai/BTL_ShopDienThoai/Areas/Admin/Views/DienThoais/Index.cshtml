@@ -1,0 +1,115 @@
+﻿@model PagedList.IPagedList<BTL_ShopDienThoai.Models.DienThoai>
+@*@model IEnumerable<BTL_ShopDienThoai.Models.DienThoai>*@
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@*<h2>Danh sách điện thoại</h2>*@
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div>
+    <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400; color:red">Quản Lý Điện Thoại</h2>
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        <p style="color:red">
+            Tìm  điện thoại: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Tìm" />
+        </p>
+    }
+    <hr />
+    <table class="table">
+        <p>
+            <button style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;">
+                <a href="@Url.Action("Create","DienThoais")" style="text-decoration:none; color:red">Thêm mới</a>
+            </button>
+        </p>
+        <tr>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Hang.TenHang)
+                </th>*@
+            <th>
+                Mã điện thoại
+            </th>
+
+            <th>
+                @Html.ActionLink("Tên điện thoại", "Index", new { sortOrder = ViewBag.SapTheoTen, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                Thương hiệu
+            </th>
+            <th>
+                Hình ảnh
+            </th>
+            <th>
+                @Html.ActionLink("Giá", "Index", new { sortOrder = ViewBag.SapTheoGia, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td>
+                        @Html.DisplayFor(modelItem => item.Hang.TenHang)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThuongHieu)
+                </td>
+                <td>
+                    @{
+                        string ImagePath = "~/wwwroot/ANHDIENTHOAI/" + item.Anh;
+                    }
+                    <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                    <br />
+                    @Html.DisplayFor(modelItem => item.Anh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mota)
+                </td>
+                <td>
+                    <button style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;">
+                        <a href="@Url.Action("Details","DienThoais", new { id = item.MaDT.Trim() })" style="text-decoration:none; color:red">Xem</a>
+                    </button>
+                    <button style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;">
+                        <a href="@Url.Action("Edit","DienThoais",  new { id = item.MaDT.Trim() })" style="text-decoration:none; color:red">Sửa</a>
+                    </button>
+                    <button style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;">
+                        <a href="@Url.Action("Delete","DienThoais",  new { id = item.MaDT.Trim() })" style="text-decoration:none; color:red">Xóa</a>
+                    </button>
+                   @* @Html.ActionLink("Sửa", "Edit", new { id = item.MaDT.Trim() }) |
+                     @Html.ActionLink("Xem", "Details", new { id = item.MaDT.Trim() }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaDT.Trim() })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+    Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>

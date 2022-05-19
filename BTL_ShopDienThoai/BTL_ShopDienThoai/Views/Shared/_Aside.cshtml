@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BTL_ShopDienThoai.Models.DienThoai>
+
+@*<section id="hang-hot">
+        <div class="tieu-de">
+            <p>SẢN PHẨM BÁN CHẠY</p>
+        </div>
+        <hr size="5px" width="82%" color="coral" style="margin-bottom: 20px; margin-left: 9%;">
+        <div class="sp-hot" style="height:auto">
+            @foreach (var item in Model)
+            {
+                <div class="hot-brand">
+
+                    <div class="bao">
+                        <a href="#">
+                            <div >
+                                @{
+                                    string ImagePath = "~/wwwroot/ANHDIENTHOAI/" + item.Anh;
+                                }
+                                <img src="@Url.Content(ImagePath)" alt="" >
+                            </div>
+
+                            <div class="box-name"><a herf="#">@item.TenDT</a></div>
+                            <div style="color: red; margin-top: 5px; margin-left: 5px; font-size: 17px;">
+                                @Html.DisplayFor(modelItem => item.Gia) VND
+                            </div>
+                        </a>
+                        <div class="danh-gia">
+                            <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                            <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                            <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                            <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                            <i class="fas fa-star fa-xs" style="color: rgb(255, 217, 0);"></i>
+                            <span style="font-size: 12px;">5 đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>*@

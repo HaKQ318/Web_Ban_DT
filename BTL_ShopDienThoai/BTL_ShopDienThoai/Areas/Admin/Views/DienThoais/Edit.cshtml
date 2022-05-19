@@ -1,0 +1,121 @@
+﻿@model BTL_ShopDienThoai.Models.DienThoai
+
+@{
+    ViewBag.Title = "Edit";
+    var ImagePath = "~/wwwroot/ANHDIENTHOAI/" + Model.Anh;
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script src="~/Areas/Admin/Assets/js/ckeditor.js"></script>
+<div style="margin-top:100px">
+    <h2 style="display: flex; justify-content: center; font-size: 35px; font-weight: 400; color:red">Sửa điện thoại</h2>
+    <hr />
+    @using (Html.BeginForm("Edit", "DienThoais", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4 style="margin-left: 20px; font-weight: 400; color:red ">Điện thoại</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MaDT)
+            @* <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                    @Html.LabelFor(model => model.MaDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MaDT, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MaDT, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.TenDT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenDT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenDT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.ThuongHieu, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ThuongHieu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ThuongHieu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.Anh, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content(ImagePath)" />
+                    <p><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></p>
+                    <input name="ImageFile" id="ufile" type="file" style="display:none;" onchange="loadFile(event)" />
+                    @*@Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.SoLuong, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.SoLuong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoLuong, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Mota, new { htmlAttributes = new { @id = "ckeContent", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mota, "", new { @class = "text-danger" })
+                    <script>CKEDITOR.replace("ckeContent");</script>
+                </div>
+            </div>
+
+             <div class="form-group" style="display: flex; align-items: center; width: 100%;">
+                    @Html.LabelFor(model => model.MaHang, "MaHang", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaHang", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MaHang, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="display: flex; align-items: center; justify-content: center;">
+                    <input type="submit" style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;" value="Lưu" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <button style="font-size: 18px; margin-top: 22px; background-color: aquamarine; color: red;">
+            <a href="@Url.Action("Index","DienThoais")" style="text-decoration:none; color:red">Quay lại</a>
+        </button>
+    </div>
+    @if (ViewBag.Error != null)
+    {
+        <br />
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+
+
+</div>
+
